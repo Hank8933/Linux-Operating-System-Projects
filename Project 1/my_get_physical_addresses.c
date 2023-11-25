@@ -18,13 +18,13 @@ SYSCALL_DEFINE1(my_get_physical_addresses, unsigned long, virt_addr)
 	pgd = pgd_offset(current->mm, virt_addr);
 	if (pgd_none(*pgd))
 		return -1;
+	
+	// p4d = (p4d_t *) pgd;
+	p4d = p4d_offset(pgd, virt_addr);
+	if (p4d_none(*p4d))
+		return -1;
 
-        // p4d = (p4d_t *) pgd;
-        p4d = p4d_offset(pgd, virt_addr);
-        if (p4d_none(*p4d))
-                return -1;
-
-        pud = pud_offset(p4d, virt_addr);
+	pud = pud_offset(p4d, virt_addr);
 	if (pud_none(*pud))
 		return -1;
 
