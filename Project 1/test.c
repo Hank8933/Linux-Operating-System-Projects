@@ -35,7 +35,7 @@ void hello(int pid)
 
   b = b + pid;
   // global variable
-  printf("In thread %d \nthe value of gloable varialbe a is %d, the offset of the logical address of  a is %p, ", pid, a, &a);
+  printf("In thread %d \nthe value of global varialbe a is %d, the offset of the logical address of  a is %p, ", pid, a, &a);
   printf("the physical address of global variable a is %p\n", my_get_physical_addresses(&a));
   // heap variable
   printf("the offset of the logical address of heap variable malloc_ptr   is %p, ", malloc_ptr);
